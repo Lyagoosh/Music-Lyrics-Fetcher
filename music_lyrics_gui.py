@@ -406,7 +406,7 @@ class LyricsApp:
         self.log("📋 Log copied to clipboard", 'info')
     
     def show_about(self):
-        about_text = """Music Lyrics Fetcher v3.0.1
+        about_text = """Music Lyrics Fetcher v3.0
 
 Program for automatically adding lyrics to audio files.
 
@@ -449,7 +449,7 @@ Program for automatically adding lyrics to audio files.
         title_label.pack(pady=(0, 10))
         
         # Version
-        version_label = ttk.Label(content_frame, text="Version 3.0.1", 
+        version_label = ttk.Label(content_frame, text="Version 3.0", 
                                    font=('Arial', 10))
         version_label.pack(pady=(0, 15))
         
@@ -596,14 +596,6 @@ Free and open source software."""
                 # For MP3 use ID3 tags
                 audio = MP3(file_path, ID3=ID3)
                 
-                # Save original TDRC (date/year) tag to preserve it
-                original_tdrc = None
-                try:
-                    if audio.tags and 'TDRC' in audio.tags:
-                        original_tdrc = audio.tags['TDRC'].text[0] if audio.tags['TDRC'].text else None
-                except:
-                    pass
-                
                 try:
                     audio.add_tags()
                 except:
@@ -616,32 +608,9 @@ Free and open source software."""
                 audio.tags.add(uslt)
                 audio.save()
                 
-                # Restore original TDRC (date/year) if it existed
-                if original_tdrc:
-                    try:
-                        from mutagen.id3 import TDRC
-                        audio_restore = MP3(file_path, ID3=ID3)
-                        audio_restore.tags['TDRC'] = TDRC(encoding=3, text=[original_tdrc])
-                        audio_restore.save()
-                    except:
-                        pass
-                
-                # Also save in EasyID3 for compatibility
-                try:
-                    easy_audio = EasyID3(file_path)
-                    easy_audio['lyrics'] = lyrics[:100] + "..." if len(lyrics) > 100 else lyrics
-                    easy_audio.save()
-                except:
-                    pass
-                
             elif file_ext == '.flac':
                 # For FLAC use Vorbis Comments
                 audio = FLAC(file_path)
-                
-                # Save original date tag to preserve it
-                original_date = None
-                if 'date' in audio and audio['date']:
-                    original_date = audio['date'][0]
                 
                 # Remove old lyrics tags
                 if 'lyrics' in audio:
@@ -652,15 +621,6 @@ Free and open source software."""
                 # Add new lyrics
                 audio['lyrics'] = lyrics
                 audio.save()
-                
-                # Restore original date if it existed
-                if original_date:
-                    try:
-                        audio_restore = FLAC(file_path)
-                        audio_restore['date'] = [original_date]
-                        audio_restore.save()
-                    except:
-                        pass
             
             return True
             
