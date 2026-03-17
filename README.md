@@ -1,6 +1,6 @@
 # 🎵 Music Lyrics Fetcher
 
-[![Version](https://img.shields.io/badge/version-3.0-blue.svg)](https://github.com/Lyagoosh/Music-Lyrics-Fetcher/releases)
+[![Version](https://img.shields.io/badge/version-3.0.1-blue.svg)](https://github.com/Lyagoosh/Music-Lyrics-Fetcher/releases)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://github.com/Lyagoosh/Music-Lyrics-Fetcher)
 
