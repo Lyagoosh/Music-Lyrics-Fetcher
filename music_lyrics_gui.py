@@ -406,7 +406,7 @@ class LyricsApp:
         self.log("📋 Log copied to clipboard", 'info')
     
     def show_about(self):
-        about_text = """Music Lyrics Fetcher v3.0
+        about_text = """Music Lyrics Fetcher v3.0.1
 
 Program for automatically adding lyrics to audio files.
 
@@ -449,7 +449,7 @@ Program for automatically adding lyrics to audio files.
         title_label.pack(pady=(0, 10))
         
         # Version
-        version_label = ttk.Label(content_frame, text="Version 3.0", 
+        version_label = ttk.Label(content_frame, text="Version 3.0.1", 
                                    font=('Arial', 10))
         version_label.pack(pady=(0, 15))
         
