@@ -2,7 +2,7 @@
 MUSIC LYRICS FETCHER 
 ======================================== 
  
-Version: 3.0 
+Version: 3.0.1 
 Author: © 2026 Lyagoosh. 
 GitHub: https://github.com/Lyagoosh 
  
